@@ -1,12 +1,12 @@
-var centerDao = require('../dao/CenterDao');
+var centerDao = require('../dao/centerDao');
 
 module.exports = function(app){
 
   app.get('/centers', function(req,res){
 
     centerDao.getAll(function(centers){
-        if (centers == 'undefined'){
-          res.end('centers not found')
+        if (centers == undefined){
+          res.end(404, 'centers not found');
         } else {
           res.send(centers);
         }
@@ -18,8 +18,8 @@ module.exports = function(app){
     var id = req.params.id;
 
     centerDao.getCenter(id, function(center){
-        if (center == 'undefined'){
-          res.end(404, 'center not found')
+        if (center == undefined){
+          res.send(404, 'center not found');
         } else {
           res.send(center);
         }
@@ -38,14 +38,7 @@ module.exports = function(app){
   }),
   app.put('/center/:id', function(req,res){
     centerDao.updateCenter(req.params.id, req.body);
-    if (err){
-      res.writeHead(404);
-      res.end('center not updated')
-
-    }else{
-      res.writeHead(200);
-      res.end('center updated');
-    }
+    res.send(200, 'center updated');
   }),
   app.delete('/center/:id', function(req, res){
     centerDao.delete(req.params.id);

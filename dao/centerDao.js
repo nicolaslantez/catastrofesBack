@@ -17,7 +17,7 @@ module.exports  =  {
         });
     },
     getCenter: function(centerId, callback){
-        Center.findOne({'id': centerId}, function(err, center){
+        Center.findOne({'_id': centerId}, function(err, center){
             if (err) return console.error(err);
             if(center != undefined){
                 callback(center);
@@ -34,7 +34,7 @@ module.exports  =  {
         });
     },
     updateCenter: function(centerId, center){
-        Center.findOne({'id': centerId}, function(err, centro){
+        Center.findOne({'_id': centerId}, function(err, centro){
             if (err) return console.error(err);
             if(centro != undefined){
                 centro.name = center.name;
