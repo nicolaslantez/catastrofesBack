@@ -4,7 +4,7 @@ module.exports = function(app){
 
   app.get('/centers', function(req,res){
 
-    centers=centerDao.getAll());
+    centers=centerDao.getAll();
 
     if (centers == 'undefined'){
       res.writeHead(404);
@@ -13,7 +13,7 @@ module.exports = function(app){
       res.writeHead(200);
       res.send(center);
     }
-  },
+  }),
   app.get('/center/:id', function(req, res){
     var id = req.params.id;
     var center=centerDao.getCenter(id);
@@ -61,20 +61,17 @@ module.exports = function(app){
   app.get('/loadCenters', function(req,res){
     for (var i=0;i<5;i++){
       var center= new Center({
-        name:'a'+i;
-        numberOfPeople: 0;
-        capacity:Math.floor((Math.random() * 1000) + 1);
-        direction:'abc'+i;
-        lat: Math.floor((Math.random()*180)-90);
-        long: Math.floor((Math.random()*360)-180);
+        name:"a"+i,
+        numberOfPeople: 0,
+        capacity:Math.floor((Math.random() * 1000) + 1),
+        direction:"abc"+i,
+        lat: Math.floor((Math.random()*180)-90),
+        long: Math.floor((Math.random()*360)-180),
       });
       CenterDao.insertCenter(center);
     }
     res.writeHead(200);
     res.end('centers added');
+  });
 
-  },
-
-
-
-});
+};
