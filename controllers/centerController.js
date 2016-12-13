@@ -1,10 +1,10 @@
-var centersDao = require('../dao/CenterDao');
+var centerDao = require('../dao/CenterDao');
 
 module.exports = function(app){
 
   app.get('/centers', function(req,res){
 
-    centers=centerDao.getAll();
+    var centers=centerDao.getAll();
 
     if (centers == 'undefined'){
       res.writeHead(404);
@@ -60,7 +60,7 @@ module.exports = function(app){
   // hardcode data
   app.get('/loadCenters', function(req,res){
     for (var i=0;i<5;i++){
-      var center= new Center({
+      var center= new Object({
         name:"a"+i,
         numberOfPeople: 0,
         capacity:Math.floor((Math.random() * 1000) + 1),
@@ -68,7 +68,7 @@ module.exports = function(app){
         lat: Math.floor((Math.random()*180)-90),
         long: Math.floor((Math.random()*360)-180),
       });
-      CenterDao.insertCenter(center);
+      centerDao.insertCenter(center);
     }
     res.writeHead(200);
     res.end('centers added');

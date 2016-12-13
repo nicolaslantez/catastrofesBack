@@ -3,7 +3,8 @@
 const
   bodyParser = require('body-parser'),
   express = require('express'),
-  centerController = require('./controllers/centerController');
+  centerController = require('./controllers/centerController'),
+  config = require('config'),
   mongoose = require('mongoose');
 
 
