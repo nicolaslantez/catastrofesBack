@@ -6,15 +6,14 @@ var Schema = mongoose.Schema;
 
 //Schema Query
 var helpCenterSchema = new Schema({
-    name: { type: String },
-    numberOfPeople: { type: Number }, // { type: Number,  min: 1, max: 500 } another example
+    name: {type: String},
+    numberOfPeople: {type: Number},
     capacity: Number,
     direction: String,
     lat: String,
     long: String,
-}, { collection : 'help_centers' })
+}, {collection: 'help_centers'});
 
-var Centro = mongoose.model('help_center', helpCenterSchema);
+var Center = mongoose.model('help_center', helpCenterSchema);
 
-
-module.exports = help_center;
+module.exports = Center;
