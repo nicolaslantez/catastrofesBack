@@ -1,4 +1,4 @@
-var centerDao = require('../dao/CenterDao');
+var centerDao = require('./dao/centerDao');
 
 module.exports = function(app){
 
