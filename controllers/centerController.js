@@ -4,26 +4,26 @@ module.exports = function(app){
 
   app.get('/centers', function(req,res){
 
-    var centers=centerDao.getAll();
+    centerDao.getAll(function(centers){
+        if (centers == 'undefined'){
+          res.end('centers not found')
+        } else {
+          res.send(centers);
+        }
+    });
 
-    if (centers == 'undefined'){
-      res.writeHead(404);
-      res.end('centers not found')
-    } else {
-      res.writeHead(200);
-      res.send(center);
-    }
+
   }),
   app.get('/center/:id', function(req, res){
     var id = req.params.id;
-    var center=centerDao.getCenter(id);
-    if (center == 'undefined'){
-      res.writeHead(404);
-      res.end('center not found')
-    } else {
-      res.writeHead(200);
-      res.send(center);
-    }
+
+    centerDao.getCenter(id, function(center){
+        if (center == 'undefined'){
+          res.end(404, 'center not found')
+        } else {
+          res.send(center);
+        }
+    });
   }),
   app.post('/center', function(req, res){
     centerDao.insertCenter(req.body);
