@@ -22,6 +22,7 @@ module.exports  =  {
             if(center != undefined){
                 callback(center);
             }else{
+                console.log("center is undefined");
                 callback(center);
             };
         });
