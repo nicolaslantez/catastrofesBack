@@ -1,0 +1,3 @@
+{
+    "connectionString": "mongodb://catastrofeUser:meliuser@ds133348.mlab.com:33348/catastrofedb"
+}
